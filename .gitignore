@@ -1,0 +1,6 @@
+# Project exclude paths
+/common/target/
+/eureka-server/target/
+/freemarkerDemo/target/
+/game/target/
+/WebCrawler/target/
