@@ -56,11 +56,10 @@ public class DemoController {
 
         String a = "hello 2";
         allocate.put(a.getBytes());
-        allocate.flip();//此处必须要调用buffer的flip方法
+        //此处必须要调用buffer的flip方法
+        allocate.flip();
         channel.write(allocate);
         channel.close();
         fileOutputStream.close();
-
-
     }
 }

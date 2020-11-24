@@ -19,6 +19,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public String demoFeign() {
+//        int a = 1/0;
         return feignDemo.demoFeign();
     }
 
