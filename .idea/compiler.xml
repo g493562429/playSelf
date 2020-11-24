@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="freemarkerDemo" />
         <module name="eureka-server" />
-        <module name="common" />
         <module name="WebCrawler" />
+        <module name="common" />
+        <module name="pgsqlDemo" />
         <module name="game" />
+        <module name="freemarkerDemo" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,6 +23,7 @@
       <module name="eureka-server" options="-parameters" />
       <module name="freemarkerDemo" options="-parameters" />
       <module name="game" options="-parameters" />
+      <module name="pgsqlDemo" options="-parameters" />
     </option>
   </component>
 </project>
