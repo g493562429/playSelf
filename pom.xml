@@ -168,4 +168,17 @@
         </dependencies>
     </dependencyManagement>
 
+    <!--打包上传jar至maven私服仓库-->
+    <distributionManagement>
+        <repository>
+            <id>release</id>
+            <name>User Project Release</name>
+            <url>http://localhost:8081/nexus/content/repositories/public/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>User Project SNAPSHOTS</name>
+            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

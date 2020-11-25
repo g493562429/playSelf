@@ -1,0 +1,7 @@
+#AutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.gn.demo.config.ApplicationAutoConfig
+
+#Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+com.gn.demo.boot.EnvironmentRunListener

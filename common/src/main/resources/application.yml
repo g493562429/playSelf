@@ -1,5 +1,6 @@
 server:
   port: 8089
+
 # Eureka Server 地址
 eureka:
   client:
@@ -33,6 +34,8 @@ spring:
 # 连接超时时间（毫秒）
     timeout: 5000
     password: 123456
+  profiles:
+    active: dev
 
 demo:
   gn:
