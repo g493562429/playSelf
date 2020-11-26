@@ -38,6 +38,7 @@ public class EnvironmentRunListener implements SpringApplicationRunListener, Ord
         String[] activeProfiles = env.getActiveProfiles();
 //        System.setProperty("gn.activeProfile", env.getProperty("demo.gn.ceShi"));
         log.info("activeProfiles:{}, gn.activeProfile:{}", JSON.toJSONString(activeProfiles), System.getProperty("gn.activeProfile"));
+        log.info("env:{}", JSON.toJSONString(env));
     }
 
     @Override
