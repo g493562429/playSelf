@@ -19,4 +19,6 @@ public interface TeacherMapper {
     int updateById(Teacher teacher);
 
     int deleteById(Integer id);
+
+    Teacher selectTeacherByName(String name);
 }

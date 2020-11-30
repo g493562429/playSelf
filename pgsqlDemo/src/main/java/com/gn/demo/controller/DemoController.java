@@ -25,6 +25,12 @@ public class DemoController {
         return teacherService.selectById(id);
     }
 
+    @PostMapping("/selectByName")
+    @ApiModelProperty(name = "查询方法-根据name查询", value = "查询方法-根据name查询")
+    public Teacher selectByName(String name){
+        return teacherService.selectByName(name);
+    }
+
     @PostMapping("/insert")
     @ApiModelProperty(name = "添加方法", value = "添加方法")
     public Boolean insert(Teacher teacher){

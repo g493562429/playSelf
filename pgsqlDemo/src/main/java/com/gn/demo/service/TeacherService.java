@@ -15,4 +15,6 @@ public interface TeacherService {
     Boolean updateById(Teacher teacher);
 
     Boolean deleteById(Integer id);
+
+    Teacher selectByName(String name);
 }
