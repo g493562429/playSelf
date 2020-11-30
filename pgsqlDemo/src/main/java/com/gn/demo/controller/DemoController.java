@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @Author: gn
  * @Date: 2020-9-9
@@ -29,6 +31,12 @@ public class DemoController {
     @ApiModelProperty(name = "查询方法-根据name查询", value = "查询方法-根据name查询")
     public Teacher selectByName(String name){
         return teacherService.selectByName(name);
+    }
+
+    @PostMapping("/select")
+    @ApiModelProperty(name = "查询方法-根据任一条件查询", value = "查询方法-根据任一条件查询")
+    public List<Teacher> select(Teacher teacher){
+        return teacherService.select(teacher);
     }
 
     @PostMapping("/insert")

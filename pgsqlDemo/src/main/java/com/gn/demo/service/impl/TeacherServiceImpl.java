@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author: gn
@@ -55,5 +56,12 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher teacher = teacherMapper.selectTeacherByName(name);
         log.info("selectByName.teacher:{}", JSON.toJSONString(teacher));
         return teacher;
+    }
+
+    @Override
+    public List<Teacher> select(Teacher teacher) {
+        List<Teacher> teachers = teacherMapper.select(teacher);
+        log.info("select.teachers:{}", JSON.toJSONString(teachers));
+        return teachers;
     }
 }

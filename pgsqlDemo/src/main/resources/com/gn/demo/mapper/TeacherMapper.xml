@@ -13,12 +13,24 @@
         select * from teacher where name = #{name}
     </select>
 
+    <select id="select"
+            parameterType="com.gn.demo.dto.Teacher"
+            resultType="com.gn.demo.dto.Teacher">
+        select * from teacher where 1 = 1
+        <if test="name != null and name != ''">
+            and name = #{name}
+        </if>
+        <if test="number != null and number != ''">
+            and number = #{number}
+        </if>
+    </select>
+
     <insert id="addTeacher" parameterType="com.gn.demo.dto.Teacher">
         <selectKey keyProperty="id" resultType="java.lang.Integer" order="BEFORE">
             select nextval('seq_id')
         </selectKey>
-        INSERT INTO teacher (name, number)
-        VALUES (#{name}, #{number});
+        INSERT INTO teacher (id, name, number)
+        VALUES (#{id}, #{name}, #{number});
     </insert>
 
     <update id="updateById" parameterType="com.gn.demo.dto.Teacher">
