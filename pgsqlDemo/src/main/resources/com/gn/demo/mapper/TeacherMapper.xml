@@ -11,8 +11,8 @@
         <selectKey keyProperty="id" resultType="java.lang.Integer" order="BEFORE">
             select nextval('seq_id')
         </selectKey>
-        INSERT INTO teacher (id, name, number)
-        VALUES (#{id}, #{name}, #{number});
+        INSERT INTO teacher (name, number)
+        VALUES (#{name}, #{number});
     </insert>
 
     <update id="updateById" parameterType="com.gn.demo.dto.Teacher">
