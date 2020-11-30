@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * @Author: gn
  * @Date: 2020-9-9
- * @Description:
+ * @Description: url：http://localhost:8091/swagger-ui.html#/demo-controller
  */
 @Configuration
 @EnableSwagger2
