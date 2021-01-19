@@ -33,6 +33,7 @@ public class GlobalExceptionHandler {
     //应用到所有@RequestMapping注解方法
     //此处将键值对添加到全局，注解了@RequestMapping的方法都可以获得此键值对
     public void addUser(Model model) {
+        log.info("@ModelAttribute测试检测到使用了");
         model.addAttribute("msg", "此处将键值对添加到全局，注解了@RequestMapping的方法都可以获得此键值对");
     }
 
