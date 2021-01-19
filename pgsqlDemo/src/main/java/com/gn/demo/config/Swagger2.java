@@ -26,7 +26,8 @@ public class Swagger2 implements WebMvcConfigurer{
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("gn")
-                .apiInfo(apiInfo())//调用apiInfo方法,创建一个ApiInfo实例,里面是展示在文档页面信息内容
+                //调用apiInfo方法,创建一个ApiInfo实例,里面是展示在文档页面信息内容
+                .apiInfo(apiInfo())
                 .select()
                 //控制暴露出去的路径下的实例
                 //如果某个接口不想暴露,可以使用以下注解
@@ -44,7 +45,10 @@ public class Swagger2 implements WebMvcConfigurer{
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    //构建 api文档的详细信息函数
+    /**
+     * 构建 api文档的详细信息函数
+     * @return ApiInfo
+     */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题

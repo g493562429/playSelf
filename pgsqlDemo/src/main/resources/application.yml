@@ -1,8 +1,10 @@
 spring:
   application:
     name: pgsqlDemo
+  profiles:
+    active: stg
 
-### postgresql config ###
+  ### postgresql config ###
   datasource:
     username: postgres
     password: postgres
@@ -10,7 +12,7 @@ spring:
     url: jdbc:postgresql://192.168.25.159:9999/test
 
 server:
-  port: 8091 #服务注册中心端口号
+  port: 8091
 
 # Eureka Server 地址
 eureka:
@@ -20,3 +22,6 @@ eureka:
   # eureka实例ID
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+
+demo:
+  gn: 22

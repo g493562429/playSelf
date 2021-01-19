@@ -7,6 +7,11 @@
         select * from teacher where id = #{id}
     </select>
 
+    <select id="selectTeachers"
+            resultType="com.gn.demo.dto.Teacher">
+        select t.id, t.name, t.number from teacher t
+    </select>
+
     <select id="selectTeacherByName"
             parameterType="java.lang.String"
             resultType="com.gn.demo.dto.Teacher">
@@ -17,6 +22,9 @@
             parameterType="com.gn.demo.dto.Teacher"
             resultType="com.gn.demo.dto.Teacher">
         select * from teacher where 1 = 1
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
         <if test="name != null and name != ''">
             and name = #{name}
         </if>
@@ -42,4 +50,12 @@
     <delete id="deleteById" parameterType="java.lang.Integer">
         delete from teacher where id = #{id}
     </delete>
+
+    <!--新增/修改-->
+    <insert id="upSert" parameterType="com.gn.demo.dto.Teacher">
+        insert into teacher (id, name, number)
+        values(#{id}, #{name}, #{number})
+        on conflict(id)
+        do update set name = #{name}, number = #{number};
+    </insert>
 </mapper>

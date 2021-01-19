@@ -55,4 +55,17 @@ public interface TeacherMapper {
      * @return teacher实体类
      */
     List<Teacher> select(Teacher teacher);
+
+    /**
+     * 查询teacher列表方法
+     * @return List<Teacher>
+     */
+    List<Teacher> selectTeachers();
+
+    /**
+     * 新增/修改
+     * @param teacher teacher
+     * @return int
+     */
+    int upSert(Teacher teacher);
 }
