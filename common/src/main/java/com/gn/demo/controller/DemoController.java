@@ -92,7 +92,7 @@ public class DemoController {
     }
 
     @PostMapping("uploadUrl")
-    public HttpServletResponse uploadurl(HttpServletRequest request,
+    public HttpServletResponse uploadUrl(HttpServletRequest request,
                             HttpServletResponse response, String id){
         if(!(request instanceof MultipartHttpServletRequest)){
             response.addHeader("msg", "FALSE");

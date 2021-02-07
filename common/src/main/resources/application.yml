@@ -40,3 +40,6 @@ spring:
 demo:
   gn:
     ceShi : 11
+    list : aaa,bbb,ccc
+    map : '{"aaa":"90","bbb":"80"}'
+    userDto : '{"username":"gn","password":"gn","checkCode":"1234","inputCode":"1234"}'
