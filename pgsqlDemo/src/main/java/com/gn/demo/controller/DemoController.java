@@ -1,5 +1,6 @@
 package com.gn.demo.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.gn.demo.dto.Teacher;
 import com.gn.demo.model.ReturnJson;
 import com.gn.demo.service.TeacherService;
@@ -11,6 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * @Author: gn
@@ -34,6 +41,10 @@ public class DemoController {
     @PostMapping("/selectByName")
     @ApiModelProperty(name = "查询方法-根据name查询", value = "查询方法-根据name查询")
     public ReturnJson selectByName(String name) {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        log.info("parameterMap:{}", JSON.toJSONString(parameterMap));
         return teacherService.selectByName(name);
     }
 
@@ -55,6 +66,10 @@ public class DemoController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
+        Cookie[] cookies = request.getCookies();
+        log.info("cookies:{}", JSON.toJSONString(cookies));
         ReturnJson returnJson = teacherService.selectTeachers();
         long end = System.currentTimeMillis();
         log.info("查询耗时:{} ms", end - start);

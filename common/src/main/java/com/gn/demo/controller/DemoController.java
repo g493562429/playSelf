@@ -1,7 +1,10 @@
 package com.gn.demo.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.gn.demo.Factory.ReturnJsonFactory;
 import com.gn.demo.config.CommonConfig;
+import com.gn.demo.dto.UserDto;
+import com.gn.demo.model.ReturnJson;
 import com.gn.demo.service.DemoService;
 import com.gn.demo.utils.RedisDistributedLock;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +19,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author: gn
@@ -53,8 +59,13 @@ public class DemoController {
     @GetMapping("/ss")
     @ResponseBody
     public String demo(){
+        Map<String, Integer> map = commonConfig.getMap();
         log.info("配置获取测试：{}", commonConfig.getCeShi());
-        return demoService.demoFeign();
+        log.info("配置获取测试：list:{}", commonConfig.getList());
+        log.info("配置获取测试：userDto:{}", commonConfig.getUserDto());
+        log.info("配置获取测试.map:{}", map);
+//        return demoService.demoFeign();
+        return commonConfig.toString();
     }
     @PostMapping("/toJson")
     @ResponseBody
@@ -80,7 +91,7 @@ public class DemoController {
         return result;
     }
 
-    @PostMapping("uploadurl")
+    @PostMapping("uploadUrl")
     public HttpServletResponse uploadurl(HttpServletRequest request,
                             HttpServletResponse response, String id){
         if(!(request instanceof MultipartHttpServletRequest)){
@@ -116,4 +127,17 @@ public class DemoController {
             e.printStackTrace();
         }
     }
+
+    @PostMapping("/login")
+    @CrossOrigin
+    @ResponseBody
+    public ReturnJson login(UserDto userDto){
+        log.info("userDto:{}", JSON.toJSONString(userDto));
+        if (!StringUtils.isEmpty(userDto) && !Objects.equals(userDto.getCheckCode().toUpperCase(), userDto.getInputCode().toUpperCase())) {
+            return ReturnJsonFactory.fail("10001","请输入正确的验证码");
+        }
+        //demoService.login(userDto);
+        return ReturnJsonFactory.success(userDto);
+    }
+
 }

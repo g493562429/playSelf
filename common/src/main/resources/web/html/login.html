@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录页面</title>
+    <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .code {
+            width: 150px;
+            right: auto;
+            height: 100px;
+            line-height: normal;
+            font-family: Arial;
+            font-style: italic;
+            color: blue;
+            font-size: 16px;
+            border: 0;
+            padding: 2px 3px;
+            letter-spacing: 3px;
+            font-weight: bolder;
+            cursor: pointer;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #D8B7E3;
+        }
+
+        span {
+            text-decoration: none;
+            font-size: 12px;
+            color: #288bc4;
+            padding-left: 10px;
+        }
+
+        span:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    //页面加载时，生成随机验证码
+    window.onload = function () {
+        createCode(4);
+    }
+
+    //生成验证码的方法
+    function createCode(length) {
+        var code = "";
+        var codeLength = parseInt(length); //验证码的长度
+        var checkCode = document.getElementById("checkCode");
+        ////所有候选组成验证码的字符，当然也可以用中文的
+        var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        //循环组成验证码的字符串
+        for (var i = 0; i < codeLength; i++) {
+            //获取随机验证码下标
+            var charNum = Math.floor(Math.random() * 62);
+            //组合成指定字符验证码
+            code += codeChars[charNum];
+        }
+        if (checkCode) {
+            //为验证码区域添加样式名
+            checkCode.className = "code";
+            //将生成验证码赋值到显示区
+            checkCode.innerHTML = code;
+        }
+    }
+
+    //检查验证码是否正确
+    function validateCode() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        //获取显示区生成的验证码
+        var checkCode = document.getElementById("checkCode").innerHTML;
+        console.log(document.getElementById("checkCode"));
+        //获取输入的验证码
+        var inputCode = document.getElementById("inputCode").value;
+        var account = {
+            "username": username,
+            "password": password,
+            "checkCode": checkCode,
+            "inputCode": inputCode
+        };
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "http://127.0.0.1:8089/common/login",
+            crossDomain: true,
+            data: account,
+            success: function (msg) {
+                alert(msg);
+            },
+            error: function (response) {
+                alert("失败:" + response);
+            }
+        });
+        console.log(checkCode);
+        console.log(inputCode);
+        /*if (inputCode.length <= 0) {
+            alert("请输入验证码！");
+        } else if (inputCode.toUpperCase() != checkCode.toUpperCase()) {
+            alert("验证码输入有误！");
+            createCode(4);
+        } else {
+            alert("验证码正确！");
+        }*/
+    }
+</script>
+<p>
+<h1 style="color: #288bc4;text-align:center;">登录界面</h1>
+</p>
+<div style="text-align: left; margin-left: 40%">
+    <div>账号 <input id="username" style="width: 190px" type="username" name="username"><br></div>
+    <div>密码 <input id="password" style="width: 190px" type="password" name="password"><br></div>
+    <div>
+        验证码：
+        <input type="text" id="inputCode" name="inputCode"/>
+        <span id="checkCode" class="code" onclick="createCode(4)"></span>
+        <!--<input type="button"  value="确定"/>-->
+        <span onclick="createCode(4)">看不清换一张</span>
+    </div>
+</div>
+<div style="align-content: center;margin-left: 45%">
+    <input type="submit" value="登陆" onclick="validateCode()">
+</div>
+</body>
+</html>

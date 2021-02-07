@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>index</title>
+</head>
+<article>中国</article>
+<body>
+<p>归宁</p>
+<video width="320" height="240" controls>
+<!--<source src="C:\Users\49356\Desktop\username.png" type="video/mp4">-->
+ <source src="..\video\horse.ogg" type="audio/ogg">
+</video>
+<p>一张图片：</p>
+<a href="https://www.baidu.com">
+  <img loading="lazy" src="..\pic\username.png" height="240" width="320" alt="gg">
+</a>
+<!--<p>
+ 账号<input type="username" name="username"><br/>
+ 密码<input type="password" name="password">
+ <button href="http://localhost:8089/common/login" type="submit">提交</button>
+</p>-->
+<form action="http://localhost:8089/common/tryLock">
+ lockName: <input type="text" name="lockName"><br>
+ expiredTime: <input type="text" name="expiredTime"><br>
+ <input type="submit" value="提交">
+</form>
+<form action="http://localhost:8089/common/login" method="post">
+ 账号<input name="username" type="username"><br/>
+ 密码<input name="password" type="password"><br/>
+ <input type="submit" value="提交">
+</form>
+<p>一个矩阵：</p>
+<canvas id="myCanvas"></canvas>
+</body>
+</html>
+<script type="text/javascript">
+ var canvas=document.getElementById('myCanvas');
+ var ctx=canvas.getContext('2d');
+ ctx.fillStyle='rgba(234,5,51,0.97)';
+ ctx.fillRect(0,0,80,100);
+</script>
