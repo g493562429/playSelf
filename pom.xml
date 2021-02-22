@@ -21,6 +21,7 @@
         <module>game</module>
         <module>WebCrawler</module>
         <module>pgsqlDemo</module>
+        <module>handleDemo</module>
     </modules>
 
     <properties>
