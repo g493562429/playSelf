@@ -35,6 +35,7 @@ public class Swagger2 implements WebMvcConfigurer{
                 .apis(RequestHandlerSelectors.basePackage("com.gn.demo.controller"))
 //                .paths(PathSelectors.any())
                 .build();
+
     }
 
     @Override
