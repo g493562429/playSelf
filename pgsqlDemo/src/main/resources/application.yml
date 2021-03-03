@@ -3,6 +3,12 @@ spring:
     name: pgsqlDemo
   profiles:
     active: stg
+  main:
+    allow-bean-definition-overriding: true
+  #redis配置
+  redis:
+    database: 0
+    password: root
 
   ### postgresql config ###
   datasource:
