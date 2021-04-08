@@ -136,15 +136,16 @@ public class DemoController {
         }
     }
 
-    @PostMapping("/login")
+    @PostMapping("/loginCheck")
     @CrossOrigin
     @ResponseBody
     public ReturnJson login(UserDto userDto){
         log.info("userDto:{}", JSON.toJSONString(userDto));
         if (!StringUtils.isEmpty(userDto) && !Objects.equals(userDto.getCheckCode().toUpperCase(), userDto.getInputCode().toUpperCase())) {
+
             return ReturnJsonFactory.fail("10001","请输入正确的验证码");
         }
-        //demoService.login(userDto);
+//        demoService.login(userDto);
         return ReturnJsonFactory.success(userDto);
     }
 

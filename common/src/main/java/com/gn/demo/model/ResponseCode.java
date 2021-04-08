@@ -67,6 +67,7 @@ public class ResponseCode {
             return responseMessage.toString(showCode);
         }
 
+        @Override
         public String toString() {
             return this.toString(true);
         }

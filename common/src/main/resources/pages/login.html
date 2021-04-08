@@ -87,14 +87,19 @@
         $.ajax({
             type: "post",
             dataType: "json",
-            url: "http://127.0.0.1:8089/common/login",
+            url: "http://127.0.0.1:8089/common/loginCheck",
             crossDomain: true,
             data: account,
             success: function (msg) {
-                alert(msg);
+                alert("1111");
+                location.href = "../error";
+                // alert(JSON.stringify(msg));
             },
             error: function (response) {
-                alert("失败:" + response);
+                alert("2222");
+                // alert("失败:" + JSON.stringify(response));
+                var url = "http://127.0.0.1:8089/error";
+                window.open(url,"?message=111");
             }
         });
         console.log(checkCode);

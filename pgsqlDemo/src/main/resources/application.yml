@@ -19,6 +19,14 @@ spring:
 
 server:
   port: 8091
+  #tomcat access_log配置
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: ${ENV_HOME:-.}/logs
+      pattern: "%{yyyy-MM-dd HH:mm:ss}t %T  %h %{X-B3-TraceId}i %T %t \"%r\" %s %b %{msec}t %{User-Agent}i %{Cookie}c %{X-Forwarded-For}i %{UserId}i"
+      file-date-format: .yyyyMMdd
+    max-threads: 500
 
 # Eureka Server 地址
 eureka:

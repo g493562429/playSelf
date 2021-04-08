@@ -55,7 +55,7 @@ public class EnvironmentRunListener implements SpringApplicationRunListener, Ord
     @Override
     public void running(ConfigurableApplicationContext context) {
         //默认实现spring自带上下文运行方法
-        log.info("running 启动开始。。。。。。。。。。。");
+        log.info("running 启动完成。。。。。。。。。。。");
     }
 
     @Override
