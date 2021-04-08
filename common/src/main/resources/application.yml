@@ -12,8 +12,18 @@ eureka:
 spring:
   application:
     name: common
+  freemarker:
+    enabled: true
+    request-context-attribute: request
+    charset: UTF-8
+    content-type: text/html
+    suffix: .html
+    template-loader-path: classpath:/pages/
+    check-template-location: true
+#  mvc:
+#    static-path-pattern: /static/**
 
-# REDIS (RedisProperties)
+  # REDIS (RedisProperties)
 # Redis数据库索引（默认为0）
   redis:
     database: 0
@@ -34,8 +44,6 @@ spring:
 # 连接超时时间（毫秒）
     timeout: 5000
     password: 123456
-  profiles:
-    active: dev
 
 demo:
   gn:
