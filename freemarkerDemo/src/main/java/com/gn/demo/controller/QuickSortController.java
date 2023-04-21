@@ -1,14 +1,9 @@
 package com.gn.demo.controller;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
-import javax.lang.model.element.VariableElement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * @Auther: gn

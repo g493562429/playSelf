@@ -11,6 +11,14 @@ eureka:
 spring:
   application:
     name: common
+  datasource:
+    url: jdbc:postgresql://120.25.167.218:5432/postgres
+    username: postgres
+    password: postgres
+
+ribbon:
+  ReadTimeout: 120000
+  ConnectTimeout: 30000
 demo:
   gn:
     ceShi : 11

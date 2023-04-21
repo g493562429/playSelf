@@ -1,6 +1,7 @@
 package com.gn.demo.controller;
 
 import com.gn.demo.config.CommonConfig;
+import com.gn.demo.entity.MUser;
 import com.gn.demo.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,5 +38,10 @@ public class DemoController {
     public Json toJson(@RequestBody Map<String,Object> jsonpObject){
         log.info("入参:{}",jsonpObject.toString());
         return (Json)jsonpObject;
+    }
+
+    @PostMapping("/test1")
+    public String test1(@RequestBody MUser mUser){
+       return demoService.test1(mUser);
     }
 }

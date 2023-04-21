@@ -1,7 +1,12 @@
 spring:
   application:
     name: freemarker-demo
-#freemarker的配置begin
+  datasource:
+    url: jdbc:postgresql://120.25.167.218:5432/postgres
+    username: postgres
+    password: postgres
+
+#freemarker的配置 start
   freemarker:
     suffix: .ftl
     charset: utf-8
@@ -9,7 +14,15 @@ spring:
     template-loader-path: classpath:/templates
   mvc:
     static-path-pattern: /static/**
-#freemarker的配置end
+#freemarker的配置 end
+
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+    use-generated-keys: true
+    default-executor-type: REUSE
+    use-actual-param-name: true
+
 
 server:
   port: 8088
